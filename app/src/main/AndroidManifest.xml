@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GameshowModeActivity"
+            android:label="@string/title_activity_gameshow_mode"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.ualberta.koshaugh.cmput301a1.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ReactionTimerActivity"
+            android:label="@string/title_activity_reaction_timer"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.ualberta.koshaugh.cmput301a1.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
