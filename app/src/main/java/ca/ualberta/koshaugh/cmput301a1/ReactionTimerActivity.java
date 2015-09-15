@@ -1,11 +1,16 @@
 package ca.ualberta.koshaugh.cmput301a1;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class ReactionTimerActivity extends AppCompatActivity {
+
+    private static final Handler taskSchedular = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,5 +38,20 @@ public class ReactionTimerActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onStartCountdownButtonClick(View view) {
+        Toast.makeText(this, "Countdown Started!", Toast.LENGTH_SHORT).show();
+
+        final ReactionTimerActivity temp = this;
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(temp, "Delayed Message", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        taskSchedular.postDelayed(task, 5000);
     }
 }
