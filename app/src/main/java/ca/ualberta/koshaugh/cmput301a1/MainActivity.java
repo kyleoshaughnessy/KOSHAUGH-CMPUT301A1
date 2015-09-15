@@ -3,8 +3,8 @@ package ca.ualberta.koshaugh.cmput301a1;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onReactionTimerButtonClick(View v) {
-        Toast.makeText(this,"Enter Reaction Timer Mode", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Enter Reaction Timer Mode", Toast.LENGTH_SHORT).show();
         final Intent intent = new Intent(this, ReactionTimerActivity.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onGameshowButtonClick(View v) {
-        Toast.makeText(this,"Enter Gameshow Button Mode", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Enter Gameshow Button Mode", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, GameshowModeActivity.class);
         startActivity(intent);
     }
