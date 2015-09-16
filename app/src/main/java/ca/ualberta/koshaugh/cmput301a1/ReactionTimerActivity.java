@@ -63,6 +63,8 @@ public class ReactionTimerActivity extends AppCompatActivity {
                         stat.stop();
                         Toast.makeText(ReactionTimerActivity.this, "You reacted in " + stat.getReactionTime().toString() + " ms", Toast.LENGTH_LONG).show();
                         reactionTimeButton.setOnClickListener(null);
+                        ReactionStatisticManager.getManager().addStatistic(stat);
+                        ReactionStatisticManager.getManager().saveStatistics();
                     }
                 });
                 stat.start();

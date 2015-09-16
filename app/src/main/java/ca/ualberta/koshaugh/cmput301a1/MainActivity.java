@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ReactionStatisticManager.createManager(getApplicationContext());
+        ReactionStatisticManager.getManager().loadStatistics();
     }
 
     @Override

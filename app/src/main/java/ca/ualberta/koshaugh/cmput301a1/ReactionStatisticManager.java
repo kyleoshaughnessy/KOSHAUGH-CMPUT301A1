@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class ReactionStatisticManager {
 
-    private static final String preferneceFile = "StudentList";
+    private static final String preferneceFile = "KOSHAUGH_A1";
     private static final String key = "reactionStatisticList";
 
     private static ReactionStatisticManager studentListManager = null;
@@ -21,7 +21,7 @@ public class ReactionStatisticManager {
     public static void createManager(Context context) {
         if (studentListManager == null) {
             if (context==null) {
-                throw new RuntimeException("missing context for StudentListManager");
+                throw new RuntimeException("missing context");
             }
             studentListManager = new ReactionStatisticManager(context);
         }
