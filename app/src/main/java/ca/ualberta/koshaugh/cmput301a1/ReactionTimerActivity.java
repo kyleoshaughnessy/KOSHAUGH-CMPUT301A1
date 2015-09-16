@@ -3,7 +3,6 @@ package ca.ualberta.koshaugh.cmput301a1;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -46,21 +45,50 @@ public class ReactionTimerActivity extends AppCompatActivity {
     }
 
     public void onStartCountdownButtonClick(View view) {
-        Toast.makeText(this, "On your marks!", Toast.LENGTH_SHORT).show();
         final Drawable reactionButtonBackground =
                 findViewById(R.id.reactionButton).getBackground();
 
+        final Button reactionTimeButton = (Button) findViewById(R.id.reactionButton);
+
         reactionButtonBackground.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
 
-        Runnable task = new Runnable() {
+        final Runnable getReactionTime = new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(ReactionTimerActivity.this, "Get set!", Toast.LENGTH_SHORT).show();
-                reactionButtonBackground.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+                final ReactionStatistic stat = new ReactionStatistic();
+                reactionButtonBackground.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+                reactionTimeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        stat.stop();
+                        Toast.makeText(ReactionTimerActivity.this, "You reacted in " + stat.getReactionTime().toString() + " ms", Toast.LENGTH_LONG).show();
+                        reactionTimeButton.setOnClickListener(null);
+                    }
+                });
+                stat.start();
             }
         };
 
-        handler.postDelayed(task, 3000);
+        Runnable countDownToReactionTimer = new Runnable() {
+            @Override
+            public void run() {
+                reactionButtonBackground.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+                long delay = (long) (Math.random() * 2000);
+                delay = Math.max(10, delay);
+                handler.postDelayed(getReactionTime, delay);
+
+                reactionTimeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        handler.removeCallbacks(getReactionTime);
+                        Toast.makeText(ReactionTimerActivity.this, "You reacted too quickly!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+
+
+        handler.postDelayed(countDownToReactionTimer, 2000);
 
     }
 }

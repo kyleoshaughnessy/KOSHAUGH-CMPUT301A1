@@ -40,4 +40,12 @@ public class ReactionStatistic {
     public Long getReactionTime() {
         return endTime.getTime() - startTime.getTime();
     }
+
+    public void start() {
+        setStartTime(new Date());
+    }
+
+    public void stop() {
+        setEndTime(new Date());
+    }
 }

@@ -41,12 +41,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onReactionTimerButtonClick(View v) {
-        Toast.makeText(this, "Enter Reaction Timer Mode", Toast.LENGTH_SHORT).show();
         final Intent intent = new Intent(this, ReactionTimerActivity.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("This is the Reaction Timer Mode!\n" +
-                "To begin, press OK and then start the countdown. Some time after 5 seconds have " +
+                "To begin, press OK and then start the countdown. Some time after 2 seconds have " +
                 "elapsed the large reaction button will notify you to click it. From this we " +
                 "can determine your reaction time to the alert.");
         builder.setCancelable(false);
