@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by kyleoshaughnessy on 15-09-15.
  */
-public class ReactionStatistic {
+public class ReactionStatistic implements Comparable<ReactionStatistic> {
     private Date startTime;
     private Date endTime;
 
@@ -47,5 +47,13 @@ public class ReactionStatistic {
 
     public void stop() {
         setEndTime(new Date());
+    }
+
+    @Override
+    public int compareTo(ReactionStatistic another) {
+        if (another == null) {
+            return 1;
+        }
+        return getStartTime().compareTo(another.getStartTime());
     }
 }
