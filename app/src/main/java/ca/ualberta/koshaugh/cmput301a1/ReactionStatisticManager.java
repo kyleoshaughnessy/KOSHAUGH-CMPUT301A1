@@ -59,7 +59,12 @@ public class ReactionStatisticManager {
         Gson gson = new Gson();
         String json = context.getSharedPreferences(preferneceFile, context.MODE_PRIVATE).getString(key, "");
         ReactionStatistic[] tempStats = gson.fromJson(json, ReactionStatistic[].class);
-        statistics = new ArrayList<>(Arrays.asList(tempStats));
+        if (tempStats != null) {
+            statistics = new ArrayList<>(Arrays.asList(tempStats));
+        }
+        else {
+            statistics = new ArrayList<>();
+        }
     }
 
     public ReactionStatistic getMedian(Integer lastN) {
