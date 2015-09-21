@@ -51,18 +51,22 @@ public class ReactionTimerActivity extends AppCompatActivity {
         final Button reactionTimeButton = (Button) findViewById(R.id.reactionButton);
 
         reactionButtonBackground.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+        reactionTimeButton.setText("On your mark...");
 
         final Runnable getReactionTime = new Runnable() {
             @Override
             public void run() {
                 final ReactionStatistic stat = new ReactionStatistic();
                 reactionButtonBackground.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
+                reactionTimeButton.setText("GO!!!");
                 reactionTimeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         stat.stop();
                         Toast.makeText(ReactionTimerActivity.this, "You reacted in " + stat.getReactionTime().toString() + " ms", Toast.LENGTH_LONG).show();
                         reactionTimeButton.setOnClickListener(null);
+                        reactionTimeButton.setText("");
+                        reactionButtonBackground.setColorFilter(null);
                         ReactionStatisticManager.getManager().addStatistic(stat);
                         ReactionStatisticManager.getManager().saveStatistics();
                     }
@@ -75,6 +79,8 @@ public class ReactionTimerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 reactionButtonBackground.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
+                reactionTimeButton.setText("Get set...");
+
                 long delay = (long) (Math.random() * 2000);
                 delay = Math.max(10, delay);
                 handler.postDelayed(getReactionTime, delay);
