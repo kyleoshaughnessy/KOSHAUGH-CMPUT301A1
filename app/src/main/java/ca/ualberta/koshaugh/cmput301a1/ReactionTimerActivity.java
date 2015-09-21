@@ -89,6 +89,8 @@ public class ReactionTimerActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         handler.removeCallbacks(getReactionTime);
+                        reactionTimeButton.setText("");
+                        reactionButtonBackground.setColorFilter(null);
                         Toast.makeText(ReactionTimerActivity.this, "You reacted too quickly!", Toast.LENGTH_SHORT).show();
                     }
                 });
