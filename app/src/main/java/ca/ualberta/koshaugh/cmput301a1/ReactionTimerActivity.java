@@ -47,11 +47,14 @@ public class ReactionTimerActivity extends AppCompatActivity {
     public void onStartCountdownButtonClick(View view) {
         final Drawable reactionButtonBackground =
                 findViewById(R.id.reactionButton).getBackground();
-
         final Button reactionTimeButton = (Button) findViewById(R.id.reactionButton);
 
         reactionButtonBackground.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
         reactionTimeButton.setText("On your mark...");
+
+        // negate effects of previous state if user resets countdown
+        handler.removeCallbacksAndMessages(null);
+        reactionTimeButton.setOnClickListener(null);
 
         final Runnable getReactionTime = new Runnable() {
             @Override
