@@ -50,8 +50,7 @@ public class ReactionTimerActivity extends AppCompatActivity {
         final Button reactionTimeButton = (Button) findViewById(R.id.reactionButton);
 
         reactionButtonBackground.setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
-        reactionTimeButton.setText("On your mark...");
-
+        reactionTimeButton.setText(R.string.reaction_ready);
         // negate effects of previous state if user resets countdown
         handler.removeCallbacksAndMessages(null);
         reactionTimeButton.setOnClickListener(null);
@@ -61,7 +60,7 @@ public class ReactionTimerActivity extends AppCompatActivity {
             public void run() {
                 final ReactionStatistic stat = new ReactionStatistic();
                 reactionButtonBackground.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
-                reactionTimeButton.setText("GO!!!");
+                reactionTimeButton.setText(R.string.reaction_go);
                 reactionTimeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -82,7 +81,7 @@ public class ReactionTimerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 reactionButtonBackground.setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
-                reactionTimeButton.setText("Get set...");
+                reactionTimeButton.setText(R.string.reaction_set);
 
                 long delay = (long) (Math.random() * 2000);
                 delay = Math.max(10, delay);
@@ -94,7 +93,8 @@ public class ReactionTimerActivity extends AppCompatActivity {
                         handler.removeCallbacks(getReactionTime);
                         reactionTimeButton.setText("");
                         reactionButtonBackground.setColorFilter(null);
-                        Toast.makeText(ReactionTimerActivity.this, "You reacted too quickly!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReactionTimerActivity.this, R.string.reaction_too_fast, Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }

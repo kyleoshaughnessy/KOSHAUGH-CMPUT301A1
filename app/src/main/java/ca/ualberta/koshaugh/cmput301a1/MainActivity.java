@@ -46,10 +46,7 @@ public class MainActivity extends AppCompatActivity {
         final Intent intent = new Intent(this, ReactionTimerActivity.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("This is the Reaction Timer Mode!\n" +
-                "To begin, press OK and then start the countdown. Some time after 2 seconds have " +
-                "elapsed the large reaction button will notify you to click it. From this we " +
-                "can determine your reaction time to the alert.");
+        builder.setMessage(R.string.reaction_modal_dialog);
         builder.setCancelable(false);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
