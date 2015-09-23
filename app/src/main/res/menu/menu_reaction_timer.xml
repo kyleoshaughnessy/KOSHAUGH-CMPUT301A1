@@ -3,5 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.ualberta.koshaugh.cmput301a1.ReactionTimerActivity">
     <item android:id="@+id/action_statistics" android:title="@string/action_statistics"
-        android:orderInCategory="100" app:showAsAction="never" />
+        android:orderInCategory="100" app:showAsAction="never"
+        android:onClick="onStatisticsMenuClick"/>
 </menu>

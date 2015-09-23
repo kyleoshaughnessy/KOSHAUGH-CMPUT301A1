@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ca.ualberta.koshaugh.cmput301a1.MainActivity" />
         </activity>
+        <activity
+            android:name=".ReactionStatisticActivity"
+            android:label="@string/title_activity_reaction_statistic"
+            android:parentActivityName=".ReactionTimerActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.ualberta.koshaugh.cmput301a1.ReactionTimerActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -17,23 +17,6 @@ public class ReactionStatisticManager {
     private static final String key = "reactionStatisticList";
 
     private static ReactionStatisticManager studentListManager = null;
-
-    public static void createManager(Context context) {
-        if (studentListManager == null) {
-            if (context==null) {
-                throw new RuntimeException("missing context");
-            }
-            studentListManager = new ReactionStatisticManager(context);
-        }
-    }
-
-    public static ReactionStatisticManager getManager() {
-        if (studentListManager==null) {
-            throw new RuntimeException("ReactionStatisticManager has not yet been initialized");
-        }
-        return studentListManager;
-    }
-
     private Context context;
     private ArrayList<ReactionStatistic> statistics;
 
@@ -42,12 +25,28 @@ public class ReactionStatisticManager {
         this.statistics = new ArrayList<>();
     }
 
+    public static void createManager(Context context) {
+        if (studentListManager == null) {
+            if (context == null) {
+                throw new RuntimeException("missing context");
+            }
+            studentListManager = new ReactionStatisticManager(context);
+        }
+    }
+
+    public static ReactionStatisticManager getManager() {
+        if (studentListManager == null) {
+            throw new RuntimeException("ReactionStatisticManager has not yet been initialized");
+        }
+        return studentListManager;
+    }
+
     public void addStatistic(ReactionStatistic statistic) {
         statistics.add(statistic);
     }
 
     public void saveStatistics() {
-        SharedPreferences  mPrefs = context.getSharedPreferences(preferneceFile,Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = context.getSharedPreferences(preferneceFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(statistics);
@@ -61,8 +60,7 @@ public class ReactionStatisticManager {
         ReactionStatistic[] tempStats = gson.fromJson(json, ReactionStatistic[].class);
         if (tempStats != null) {
             statistics = new ArrayList<>(Arrays.asList(tempStats));
-        }
-        else {
+        } else {
             statistics = new ArrayList<>();
         }
     }

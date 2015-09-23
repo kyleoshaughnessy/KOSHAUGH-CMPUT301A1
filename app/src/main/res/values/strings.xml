@@ -12,4 +12,5 @@
     <string name="reaction_too_fast">You reacted too quickly!</string>
     <string name="reaction_modal_dialog">This is the Reaction Timer Mode!
 To begin, press OK and then start the countdown. Some time after 2 seconds have elapsed the large reaction button will notify you to click it. From this we can determine your reaction time to the alert.</string>
+    <string name="title_activity_reaction_statistic">ReactionStatisticActivity</string>
 </resources>
