@@ -56,4 +56,9 @@ public class ReactionStatistic implements Comparable<ReactionStatistic> {
         }
         return getStartTime().compareTo(another.getStartTime());
     }
+
+    @Override
+    public String toString() {
+        return startTime.toString() + " : " + getReactionTime() + " ns";
+    }
 }

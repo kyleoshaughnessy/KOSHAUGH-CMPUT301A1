@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by kyleoshaughnessy on 15-09-15.
@@ -66,19 +68,21 @@ public class ReactionStatisticManager {
     }
 
     public ReactionStatistic getMedian(Integer lastN) {
-        return null;
+        return getLastNReactionStatsSorted(lastN).get(lastN / 2);
     }
 
     public ReactionStatistic getAverage(Integer lastN) {
-        return null;
+        return getLastNReactionStatsSorted(lastN).get(lastN / 2);
     }
 
     public ReactionStatistic getMinimum(Integer lastN) {
-        return null;
+        return getLastNReactionStatsSorted(lastN).get(0);
+
     }
 
     public ReactionStatistic getMaximum(Integer lastN) {
-        return null;
+        return getLastNReactionStatsSorted(lastN).get(lastN - 1);
+
     }
 
     public ReactionStatistic getMedian() {
@@ -97,4 +101,33 @@ public class ReactionStatisticManager {
         return getMaximum(statistics.size());
     }
 
+    private void sortByReactionTime() {
+        sortByReactionTime(statistics);
+    }
+
+    private void sortByReactionTime(ArrayList<ReactionStatistic> list) {
+        Comparator<ReactionStatistic> reactionTimeComparator = new Comparator<ReactionStatistic>() {
+            @Override
+            public int compare(ReactionStatistic lhs, ReactionStatistic rhs) {
+                return lhs.getReactionTime().compareTo(rhs.getReactionTime());
+            }
+        };
+
+        Collections.sort(list, reactionTimeComparator);
+    }
+
+    private void sortByStartTime() {
+        Collections.sort(statistics);
+    }
+
+    private ArrayList<ReactionStatistic> getLastNReactionStatsSorted(Integer lastN) {
+        sortByStartTime();
+        ArrayList<ReactionStatistic> tempList = (ArrayList<ReactionStatistic>) statistics.subList(0, lastN);
+        sortByReactionTime(tempList);
+        return tempList;
+    }
+
+    private void clearStatistics() {
+        statistics.clear();
+    }
 }
