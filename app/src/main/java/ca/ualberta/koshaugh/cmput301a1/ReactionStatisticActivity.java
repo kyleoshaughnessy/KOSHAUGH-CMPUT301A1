@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 public class ReactionStatisticActivity extends AppCompatActivity {
 
     private Integer[] numberOptions;
@@ -15,11 +17,19 @@ public class ReactionStatisticActivity extends AppCompatActivity {
     private ListView statsListView;
     private ArrayAdapter<Integer> numberAdapter;
     private ArrayAdapter<String> statsAdapter;
+    private ArrayList<String> stats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics_list);
+
+        statsListView = (ListView) findViewById(R.id.statisticsListView);
+        stats = new ArrayList<>();
+        statsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stats);
+        statsListView.setAdapter(statsAdapter);
+        statsAdapter.notifyDataSetChanged();
+
 
         this.numberOptions = new Integer[]{
                 10, 100
@@ -29,7 +39,6 @@ public class ReactionStatisticActivity extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item, numberOptions);
         numberSpinner = (Spinner) findViewById(R.id.numberOfStatisticsSpinner);
         numberSpinner.setAdapter(numberAdapter);
-
         numberSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -46,7 +55,13 @@ public class ReactionStatisticActivity extends AppCompatActivity {
 
     public void updateListView() {
         Integer number = (Integer) numberSpinner.getSelectedItem();
-        ReactionStatistic statistic = null;
         ReactionStatisticManager statisticManager = ReactionStatisticManager.getManager();
+        stats.clear();
+        stats.addAll(statisticManager.getPrintedStatistics(number));
+        statsAdapter.notifyDataSetChanged();
+    }
+
+    public void onClickClearStatistics(View view) {
+        ReactionStatisticManager.getManager().clearStatistics();
     }
 }

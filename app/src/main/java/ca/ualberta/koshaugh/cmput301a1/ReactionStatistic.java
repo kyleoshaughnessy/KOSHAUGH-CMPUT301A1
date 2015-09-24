@@ -6,39 +6,40 @@ import java.util.Date;
  * Created by kyleoshaughnessy on 15-09-15.
  */
 public class ReactionStatistic implements Comparable<ReactionStatistic> {
-    private Date startTime;
-    private Date endTime;
+    private Long startTime;
+    private Long endTime;
+
 
     public ReactionStatistic() {
     }
 
     public ReactionStatistic(Date startTime) {
-        this.startTime = startTime;
+        this.startTime = startTime.getTime();
     }
 
     public ReactionStatistic(Date startTime, Date endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startTime = startTime.getTime();
+        this.endTime = endTime.getTime();
     }
 
-    public Date getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
     public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+        this.startTime = startTime.getTime();
     }
 
-    public Date getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+        this.endTime = endTime.getTime();
     }
 
     public Long getReactionTime() {
-        return endTime.getTime() - startTime.getTime();
+        return endTime - startTime;
     }
 
     public void start() {
@@ -54,11 +55,11 @@ public class ReactionStatistic implements Comparable<ReactionStatistic> {
         if (another == null) {
             return 1;
         }
-        return getStartTime().compareTo(another.getStartTime());
+        return another.getStartTime().compareTo(getStartTime());
     }
 
     @Override
     public String toString() {
-        return startTime.toString() + " : " + getReactionTime() + " ns";
+        return (new Date(startTime)).toString() + " : " + getReactionTime() + " ns";
     }
 }

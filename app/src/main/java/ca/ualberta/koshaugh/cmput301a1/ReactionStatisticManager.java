@@ -2,6 +2,7 @@ package ca.ualberta.koshaugh.cmput301a1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.ArrayAdapter;
 
 import com.google.gson.Gson;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 /**
  * Created by kyleoshaughnessy on 15-09-15.
@@ -67,37 +69,55 @@ public class ReactionStatisticManager {
         }
     }
 
-    public ReactionStatistic getMedian(Integer lastN) {
-        return getLastNReactionStatsSorted(lastN).get(lastN / 2);
+    public ArrayList<String> getPrintedStatistics(Integer lastN) {
+        ArrayList<String> stats = new ArrayList<>();
+        if (statistics.size() == 0) {
+            return stats;
+        }
+        stats.add("Maximum:\n" + getMaximum(lastN).toString());
+        stats.add("Minimum:\n" + getMinimum(lastN).toString());
+        stats.add("Median:\n" + getMedian(lastN).toString());
+        stats.add("Average:\n" + getAverage() + " ms");
+        return stats;
     }
 
-    public ReactionStatistic getAverage(Integer lastN) {
-        return getLastNReactionStatsSorted(lastN).get(lastN / 2);
+    private ReactionStatistic getMedian(Integer lastN) {
+        ArrayList<ReactionStatistic> tempList = getLastNReactionStatsSorted(lastN);
+
+        return tempList.get(tempList.size() / 2);
     }
 
-    public ReactionStatistic getMinimum(Integer lastN) {
+    private Long getAverage(Integer lastN) {
+        Long total = (long) 0;
+        for (ReactionStatistic stat : getLastNReactionStatsSorted(lastN)) {
+            total += stat.getReactionTime();
+        }
+        return total / lastN;
+    }
+
+    private ReactionStatistic getMinimum(Integer lastN) {
         return getLastNReactionStatsSorted(lastN).get(0);
 
     }
 
-    public ReactionStatistic getMaximum(Integer lastN) {
-        return getLastNReactionStatsSorted(lastN).get(lastN - 1);
-
+    private ReactionStatistic getMaximum(Integer lastN) {
+        ArrayList<ReactionStatistic> tempList = getLastNReactionStatsSorted(lastN);
+        return tempList.get(tempList.size() - 1);
     }
 
-    public ReactionStatistic getMedian() {
+    private ReactionStatistic getMedian() {
         return getMedian(statistics.size());
     }
 
-    public ReactionStatistic getAverage() {
+    private Long getAverage() {
         return getAverage(statistics.size());
     }
 
-    public ReactionStatistic getMinimum() {
+    private ReactionStatistic getMinimum() {
         return getMinimum(statistics.size());
     }
 
-    public ReactionStatistic getMaximum() {
+    private ReactionStatistic getMaximum() {
         return getMaximum(statistics.size());
     }
 
@@ -122,12 +142,19 @@ public class ReactionStatisticManager {
 
     private ArrayList<ReactionStatistic> getLastNReactionStatsSorted(Integer lastN) {
         sortByStartTime();
-        ArrayList<ReactionStatistic> tempList = (ArrayList<ReactionStatistic>) statistics.subList(0, lastN);
+        ArrayList<ReactionStatistic> tempList = new ArrayList<>();
+        try {
+            tempList.addAll(statistics.subList(0, lastN));
+        }
+        catch (Exception e) {
+            tempList.addAll(statistics);
+
+        }
         sortByReactionTime(tempList);
         return tempList;
     }
 
-    private void clearStatistics() {
+    public void clearStatistics() {
         statistics.clear();
     }
 }
