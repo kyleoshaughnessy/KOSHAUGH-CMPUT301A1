@@ -7,15 +7,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import java.util.ArrayList;
 
 public class ReactionStatisticActivity extends AppCompatActivity {
 
-    private Integer[] numberOptions;
+    private String[] numberOptions;
     private Spinner numberSpinner;
     private ListView statsListView;
-    private ArrayAdapter<Integer> numberAdapter;
+    private ArrayAdapter<String> numberAdapter;
     private ArrayAdapter<String> statsAdapter;
     private ArrayList<String> stats;
 
@@ -31,11 +32,11 @@ public class ReactionStatisticActivity extends AppCompatActivity {
         statsAdapter.notifyDataSetChanged();
 
 
-        this.numberOptions = new Integer[]{
-                10, 100
+        this.numberOptions = new String[]{
+                "10", "100", "ALL"
         };
 
-        numberAdapter = new ArrayAdapter<Integer>(
+        numberAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, numberOptions);
         numberSpinner = (Spinner) findViewById(R.id.numberOfStatisticsSpinner);
         numberSpinner.setAdapter(numberAdapter);
@@ -54,10 +55,19 @@ public class ReactionStatisticActivity extends AppCompatActivity {
     }
 
     public void updateListView() {
-        Integer number = (Integer) numberSpinner.getSelectedItem();
+        String number = (String) numberSpinner.getSelectedItem();
+        Integer actualNumber;
+
+        try {
+            actualNumber = Integer.parseInt(number);
+        }
+        catch (Exception e) {
+            actualNumber = ReactionStatisticManager.getManager().getNumberOfStatistics();
+        }
+
         ReactionStatisticManager statisticManager = ReactionStatisticManager.getManager();
         stats.clear();
-        stats.addAll(statisticManager.getPrintedStatistics(number));
+        stats.addAll(statisticManager.getPrintedStatistics(actualNumber));
         statsAdapter.notifyDataSetChanged();
     }
 

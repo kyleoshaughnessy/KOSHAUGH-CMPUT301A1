@@ -35,6 +35,7 @@ public class ReactionStatisticManager {
                 throw new RuntimeException("missing context");
             }
             studentListManager = new ReactionStatisticManager(context);
+            studentListManager.loadStatistics();
         }
     }
 
@@ -43,6 +44,10 @@ public class ReactionStatisticManager {
             throw new RuntimeException("ReactionStatisticManager has not yet been initialized");
         }
         return studentListManager;
+    }
+
+    public Integer getNumberOfStatistics() {
+        return statistics.size();
     }
 
     public void addStatistic(ReactionStatistic statistic) {
@@ -156,5 +161,6 @@ public class ReactionStatisticManager {
 
     public void clearStatistics() {
         statistics.clear();
+        saveStatistics();
     }
 }
