@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,11 +34,11 @@ public class ReactionStatisticActivity extends AppCompatActivity {
 
 
         this.numberOptions = new String[]{
-                "10", "100", "ALL"
+                "10", "100", "All"
         };
 
         numberAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, numberOptions);
+                this, android.R.layout.simple_spinner_dropdown_item, numberOptions);
         numberSpinner = (Spinner) findViewById(R.id.numberOfStatisticsSpinner);
         numberSpinner.setAdapter(numberAdapter);
         numberSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -73,5 +74,11 @@ public class ReactionStatisticActivity extends AppCompatActivity {
 
     public void onClickClearStatistics(View view) {
         ReactionStatisticManager.getManager().clearStatistics();
+        Toast.makeText(this, R.string.statistics_cleared, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onEmailStatisticsClick(View view) {
+        //TODO : Stub out functionality of emailing feature.
+        Toast.makeText(this, "Open Email intent", Toast.LENGTH_SHORT).show();
     }
 }

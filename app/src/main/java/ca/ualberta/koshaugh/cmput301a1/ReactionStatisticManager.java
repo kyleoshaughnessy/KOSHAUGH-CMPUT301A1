@@ -82,7 +82,7 @@ public class ReactionStatisticManager {
         stats.add("Maximum:\n" + getMaximum(lastN).toString());
         stats.add("Minimum:\n" + getMinimum(lastN).toString());
         stats.add("Median:\n" + getMedian(lastN).toString());
-        stats.add("Average:\n" + getAverage() + " ms");
+        stats.add("Average:\n" + getAverage(lastN) + " ms");
         return stats;
     }
 
@@ -94,10 +94,12 @@ public class ReactionStatisticManager {
 
     private Long getAverage(Integer lastN) {
         Long total = (long) 0;
+        Long size = (long) 0;
         for (ReactionStatistic stat : getLastNReactionStatsSorted(lastN)) {
             total += stat.getReactionTime();
+            size++;
         }
-        return total / lastN;
+        return total / size;
     }
 
     private ReactionStatistic getMinimum(Integer lastN) {
