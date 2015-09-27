@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ca.ualberta.koshaugh.cmput301a1.ReactionTimerActivity" />
         </activity>
+        <activity
+            android:name=".GameshowStatisticActivity"
+            android:label="@string/title_activity_gameshow_statistic"
+            android:parentActivityName=".GameshowModeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.ualberta.koshaugh.cmput301a1.GameshowModeActivity" />
+        </activity>
     </application>
 
 </manifest>
