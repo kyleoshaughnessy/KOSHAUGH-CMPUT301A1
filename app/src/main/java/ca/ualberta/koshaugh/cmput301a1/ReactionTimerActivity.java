@@ -56,7 +56,6 @@ public class ReactionTimerActivity extends AppCompatActivity {
                         reactionTimeButton.setText("");
                         reactionButtonBackground.setColorFilter(null);
                         ReactionStatisticManager.getManager().addStatistic(stat);
-                        ReactionStatisticManager.getManager().saveStatistics();
                     }
                 });
                 stat.start();

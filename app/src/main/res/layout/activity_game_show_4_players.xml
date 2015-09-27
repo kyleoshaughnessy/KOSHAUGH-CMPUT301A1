@@ -15,14 +15,16 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Player 1" />
+            android:text="Player 1"
+            android:onClick="onPlayerButtonClick" />
 
         <Button
             android:id="@+id/playerTwoButton"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Player 2" />
+            android:text="Player 2"
+            android:onClick="onPlayerButtonClick" />
     </TableRow>
 
     <TableRow
@@ -36,14 +38,16 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Player 3" />
+            android:text="Player 3"
+            android:onClick="onPlayerButtonClick" />
 
         <Button
             android:id="@+id/playerFourButton"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Player 4" />
+            android:text="Player 4"
+            android:onClick="onPlayerButtonClick" />
     </TableRow>
 
 </TableLayout>

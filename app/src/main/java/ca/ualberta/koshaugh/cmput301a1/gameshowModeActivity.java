@@ -1,16 +1,20 @@
 package ca.ualberta.koshaugh.cmput301a1;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GameshowModeActivity extends AppCompatActivity {
+    private Integer numberOfPlayers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Integer numberOfPlayers = getIntent().getIntExtra("numberOfPlayers", 2);
+        numberOfPlayers = getIntent().getIntExtra("numberOfPlayers", 2);
         switch (numberOfPlayers) {
             case 4:
                 setContentView(R.layout.activity_game_show_4_players);
@@ -46,5 +50,34 @@ public class GameshowModeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onPlayerButtonClick(View view) {
+        GameshowStatistic stat = null;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        switch (view.getId()) {
+            case R.id.playerOneButton:
+                stat = new GameshowStatistic(numberOfPlayers, 1);
+                builder.setMessage("Player 1 buzzed in first!");
+                break;
+            case R.id.playerTwoButton:
+                stat = new GameshowStatistic(numberOfPlayers, 2);
+                builder.setMessage("Player 2 buzzed in first!");
+                break;
+            case R.id.playerThreeButton:
+                stat = new GameshowStatistic(numberOfPlayers, 3);
+                builder.setMessage("Player 3 buzzed in first!");
+                break;
+            case R.id.playerFourButton:
+                stat = new GameshowStatistic(numberOfPlayers, 4);
+                builder.setMessage("Player 4 buzzed in first!");
+                break;
+        }
+        if (stat != null) {
+            GameshowStatisticManager.getManager().addStatistic(stat);
+            builder.show();
+        }
+
+
     }
 }

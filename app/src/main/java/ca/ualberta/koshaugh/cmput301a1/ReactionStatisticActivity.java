@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -61,8 +60,7 @@ public class ReactionStatisticActivity extends AppCompatActivity {
 
         try {
             actualNumber = Integer.parseInt(number);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             actualNumber = ReactionStatisticManager.getManager().getNumberOfStatistics();
         }
 

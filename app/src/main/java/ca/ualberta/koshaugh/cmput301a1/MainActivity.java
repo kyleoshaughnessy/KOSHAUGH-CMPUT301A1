@@ -5,10 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ReactionStatisticManager.createManager(getApplicationContext());
+        GameshowStatisticManager.createManager(getApplicationContext());
     }
 
     public void onReactionTimerButtonClick(View v) {
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onGameshowButtonClick(View v) {
         final Intent intent = new Intent(this, GameshowModeActivity.class);
-        String[] numberOfPlayersOptions = new String[] {"2", "3", "4"};
+        String[] numberOfPlayersOptions = new String[]{"2", "3", "4"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose the number of players");

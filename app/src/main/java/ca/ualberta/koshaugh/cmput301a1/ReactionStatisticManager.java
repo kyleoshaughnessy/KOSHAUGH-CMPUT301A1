@@ -2,7 +2,6 @@ package ca.ualberta.koshaugh.cmput301a1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.ArrayAdapter;
 
 import com.google.gson.Gson;
 
@@ -10,17 +9,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 
 /**
  * Created by kyleoshaughnessy on 15-09-15.
  */
-public class ReactionStatisticManager {
+public class ReactionStatisticManager implements StatisticsManager<ReactionStatistic> {
 
     private static final String preferneceFile = "KOSHAUGH_A1";
     private static final String key = "reactionStatisticList";
 
-    private static ReactionStatisticManager studentListManager = null;
+    private static ReactionStatisticManager reactionStatisticManager = null;
     private Context context;
     private ArrayList<ReactionStatistic> statistics;
 
@@ -30,20 +28,20 @@ public class ReactionStatisticManager {
     }
 
     public static void createManager(Context context) {
-        if (studentListManager == null) {
+        if (reactionStatisticManager == null) {
             if (context == null) {
                 throw new RuntimeException("missing context");
             }
-            studentListManager = new ReactionStatisticManager(context);
-            studentListManager.loadStatistics();
+            reactionStatisticManager = new ReactionStatisticManager(context);
+            reactionStatisticManager.loadStatistics();
         }
     }
 
     public static ReactionStatisticManager getManager() {
-        if (studentListManager == null) {
+        if (reactionStatisticManager == null) {
             throw new RuntimeException("ReactionStatisticManager has not yet been initialized");
         }
-        return studentListManager;
+        return reactionStatisticManager;
     }
 
     public Integer getNumberOfStatistics() {
@@ -52,6 +50,7 @@ public class ReactionStatisticManager {
 
     public void addStatistic(ReactionStatistic statistic) {
         statistics.add(statistic);
+        saveStatistics();
     }
 
     public void saveStatistics() {
@@ -152,8 +151,7 @@ public class ReactionStatisticManager {
         ArrayList<ReactionStatistic> tempList = new ArrayList<>();
         try {
             tempList.addAll(statistics.subList(0, lastN));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             tempList.addAll(statistics);
 
         }
