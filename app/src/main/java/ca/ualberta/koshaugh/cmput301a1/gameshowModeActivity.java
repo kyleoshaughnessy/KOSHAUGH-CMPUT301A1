@@ -10,7 +10,20 @@ public class GameshowModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_show_2_players);
+        Integer numberOfPlayers = getIntent().getIntExtra("numberOfPlayers", 2);
+        switch (numberOfPlayers) {
+            case 4:
+                setContentView(R.layout.activity_game_show_4_players);
+                break;
+            case 3:
+                setContentView(R.layout.activity_game_show_3_players);
+                break;
+            case 2:
+                setContentView(R.layout.activity_game_show_2_players);
+                break;
+            default:
+                setContentView(R.layout.activity_game_show_2_players);
+        }
     }
 
     @Override

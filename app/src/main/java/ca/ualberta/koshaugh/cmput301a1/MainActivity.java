@@ -35,8 +35,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onGameshowButtonClick(View v) {
-        Toast.makeText(this, "Enter Gameshow Button Mode", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, GameshowModeActivity.class);
-        startActivity(intent);
+        final Intent intent = new Intent(this, GameshowModeActivity.class);
+        String[] numberOfPlayersOptions = new String[] {"2", "3", "4"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose the number of players");
+        builder.setItems(numberOfPlayersOptions, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                intent.putExtra("numberOfPlayers", which + 2);
+                startActivity(intent);
+            }
+        });
+        builder.show();
     }
 }
