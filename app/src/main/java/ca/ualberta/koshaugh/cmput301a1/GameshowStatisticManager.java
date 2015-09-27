@@ -76,4 +76,32 @@ public class GameshowStatisticManager implements StatisticsManager<GameshowStati
         statistics.add(statistic);
         saveStatistics();
     }
+
+    @Override
+    public ArrayList<String> getPrintedStatistics(Integer numOfPlayers) {
+        ArrayList<GameshowStatistic> tempList = new ArrayList<>();
+        ArrayList<Integer> count = new ArrayList<>();
+        ArrayList<String> out = new ArrayList<>();
+
+        for (GameshowStatistic stat: statistics) {
+            if (stat.getNumberOfPlayers().equals(numOfPlayers)) {
+                tempList.add(stat);
+            }
+        }
+
+        for (int i = 0; i < numOfPlayers; i++) {
+            count.add(i, 0);
+            for (GameshowStatistic stat : tempList) {
+                if (stat.getWinningPlayer().equals(i+1)) {
+                    count.set(i, count.get(i) + 1);
+                }
+            }
+        }
+
+        for (int i = 0; i<count.size(); i++) {
+            out.add("Player " +  (i+1) + " wins: " + count.get(i));
+        }
+
+        return out;
+    }
 }

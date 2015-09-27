@@ -19,4 +19,9 @@ public class GameshowStatistic {
     public Integer getWinningPlayer() {
         return winningPlayer;
     }
+
+    @Override
+    public String toString() {
+        return "Number of players: " + numberOfPlayers.toString() + "; Winner: " + winningPlayer.toString();
+    }
 }

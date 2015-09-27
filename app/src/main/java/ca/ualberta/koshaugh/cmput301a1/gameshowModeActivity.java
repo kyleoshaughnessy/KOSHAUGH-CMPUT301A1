@@ -1,6 +1,7 @@
 package ca.ualberta.koshaugh.cmput301a1;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,13 @@ public class GameshowModeActivity extends AppCompatActivity {
     public void onPlayerButtonClick(View view) {
         GameshowStatistic stat = null;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
         switch (view.getId()) {
             case R.id.playerOneButton:
                 stat = new GameshowStatistic(numberOfPlayers, 1);
@@ -66,7 +74,8 @@ public class GameshowModeActivity extends AppCompatActivity {
     }
 
     public void onStatisticsMenuClick(MenuItem menu) {
-        Intent intent = new Intent(this, GameshowStatisticActivity.class);
+        Intent intent = new Intent(this, StatisticActivity.class);
+        intent.putExtra("type", "gameShow");
         startActivity(intent);
     }
 }

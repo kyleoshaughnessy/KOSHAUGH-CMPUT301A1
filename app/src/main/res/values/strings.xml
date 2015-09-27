@@ -18,4 +18,5 @@ To begin, press OK and then start the countdown. Some time after 2 seconds have 
     <string name="button_email_statistics">Email Statistics</string>
     <string name="number_of_recent_statistics">Number of recent statistics:</string>
     <string name="title_activity_gameshow_statistic">GameshowStatisticActivity</string>
+    <string name="number_of_players">Number of players:</string>
 </resources>

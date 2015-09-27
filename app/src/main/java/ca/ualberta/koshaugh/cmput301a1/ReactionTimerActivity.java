@@ -91,7 +91,8 @@ public class ReactionTimerActivity extends AppCompatActivity {
     }
 
     public void onStatisticsMenuClick(MenuItem menu) {
-        Intent intent = new Intent(this, ReactionStatisticActivity.class);
+        Intent intent = new Intent(this, StatisticActivity.class);
+        intent.putExtra("type", "reactionTimer");
         startActivity(intent);
     }
 }
