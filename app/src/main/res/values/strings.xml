@@ -1,23 +1,23 @@
 <resources>
-    <string name="app_name">CMPUT301A1</string>
+    <string name="app_name">koshaugh-reflex</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_statistics">Statistics</string>
-    <string name="title_activity_gameshow_mode">gameshowModeActivity</string>
-    <string name="title_activity_reaction_timer">ReactionTimerActivity</string>
+    <string name="title_activity_gameshow_mode">Gameshow Mode</string>
+    <string name="title_activity_reaction_timer">Reaction Timer Mode</string>
     <string name="reaction_ready">On your marks...</string>
     <string name="reaction_set">Get set...</string>
     <string name="reaction_go">GO!!!</string>
     <string name="reaction_too_fast">You reacted too quickly!</string>
     <string name="reaction_modal_dialog">This is the Reaction Timer Mode!
-To begin, press OK and then start the countdown. Some time after 2 seconds have elapsed the large reaction button will notify you to click it. From this we can determine your reaction time to the alert.</string>
-    <string name="title_activity_reaction_statistic">ReactionStatisticActivity</string>
+To begin, press OK and then start the countdown. Some time after 2 seconds have elapsed the large reaction button will notify you to click it, do so as fast as possible.</string>
+    <string name="title_activity_reaction_statistic">Statistics</string>
     <string name="statistics_cleared">Statistics cleared</string>
     <string name="button_clear_statistics">Clear Statistics</string>
     <string name="button_email_statistics">Email Statistics</string>
     <string name="number_of_recent_statistics">Number of recent statistics:</string>
-    <string name="title_activity_gameshow_statistic">GameshowStatisticActivity</string>
+    <string name="title_activity_gameshow_statistic">Statistics</string>
     <string name="number_of_players">Number of players:</string>
     <string name="email_error">There are no email clients installed and/or there is no email account setup</string>
     <string name="send_email_dialog_info">Send mail...</string>
