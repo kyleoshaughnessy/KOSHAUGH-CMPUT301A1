@@ -9,7 +9,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reaction Timer Mode"
+        android:text="@string/reaction_timer_mode"
         android:id="@+id/reationTimerButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gameshow Button Mode"
+        android:text="@string/gameshow_button_mode"
         android:id="@+id/gameshowModeButton"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/reationTimerButton"

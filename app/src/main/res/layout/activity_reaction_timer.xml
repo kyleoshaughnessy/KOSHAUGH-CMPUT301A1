@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Countdown"
+        android:text="@string/start_countdown"
         android:id="@+id/startCountdownButton"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Press [Start Countdown] to begin"
+        android:text="@string/press_start_countdown_to_begin"
         android:id="@+id/statusTextView"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/startCountdownButton" />
