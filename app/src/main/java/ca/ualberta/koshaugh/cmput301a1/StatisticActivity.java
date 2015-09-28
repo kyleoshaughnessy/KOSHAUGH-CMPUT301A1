@@ -1,5 +1,8 @@
 package ca.ualberta.koshaugh.cmput301a1;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,14 +10,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StatisticActivity extends AppCompatActivity {
 
     private String type;
+    private Integer spinnerNumber;
     private StatisticsManager statisticsManager;
     private String[] numberOptions;
     private Spinner numberSpinner;
@@ -83,16 +90,15 @@ public class StatisticActivity extends AppCompatActivity {
 
     public void updateListView() {
         String number = (String) numberSpinner.getSelectedItem();
-        Integer actualNumber;
 
         try {
-            actualNumber = Integer.parseInt(number);
+            spinnerNumber = Integer.parseInt(number);
         } catch (Exception e) {
-            actualNumber = ((ReactionStatisticManager) statisticsManager).getNumberOfStatistics();
+            spinnerNumber = ((ReactionStatisticManager) statisticsManager).getNumberOfStatistics();
         }
 
         stats.clear();
-        stats.addAll(statisticsManager.getPrintedStatistics(actualNumber));
+        stats.addAll(statisticsManager.getPrintedStatistics(spinnerNumber));
         statsAdapter.notifyDataSetChanged();
     }
 
@@ -102,8 +108,34 @@ public class StatisticActivity extends AppCompatActivity {
         updateListView();
     }
 
+    // Intent help taken from Aerrow's answer here:
+    // http://stackoverflow.com/questions/10294363/action-send-force-sending-with-email
     public void onEmailStatisticsClick(View view) {
-        //TODO : Stub out functionality of emailing feature.
-        Toast.makeText(this, "Open Email intent", Toast.LENGTH_SHORT).show();
+        String subject = "Statistics";
+
+        switch (type) {
+            case "gameShow":
+                subject = "Relex Statistics - GameShowBuzzer "
+                        + spinnerNumber
+                        + " Player mode";
+                break;
+            case "reactionTimer":
+                subject = "Reflex Statistics - Reaction Timer - past " + spinnerNumber + " times";
+                break;
+        }
+
+        String message = Arrays.toString(statisticsManager.getPrintedStatistics(spinnerNumber).toArray());
+        
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, message);
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+        } catch (ActivityNotFoundException ex) {
+            Toast.makeText(this, "There are no email clients installed and/or there is no email account setup", Toast.LENGTH_LONG).show();
+        }
+
     }
 }
