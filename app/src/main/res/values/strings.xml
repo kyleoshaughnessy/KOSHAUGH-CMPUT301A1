@@ -19,4 +19,7 @@ To begin, press OK and then start the countdown. Some time after 2 seconds have 
     <string name="number_of_recent_statistics">Number of recent statistics:</string>
     <string name="title_activity_gameshow_statistic">GameshowStatisticActivity</string>
     <string name="number_of_players">Number of players:</string>
+    <string name="email_error">There are no email clients installed and/or there is no email account setup</string>
+    <string name="send_email_dialog_info">Send mail...</string>
+    <string name="game_show_mode_choose_players">Choose the number of players</string>
 </resources>

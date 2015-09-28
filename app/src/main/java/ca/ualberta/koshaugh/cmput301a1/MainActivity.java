@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         String[] numberOfPlayersOptions = new String[]{"2", "3", "4"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose the number of players");
+        builder.setTitle(R.string.game_show_mode_choose_players);
         builder.setItems(numberOfPlayersOptions, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

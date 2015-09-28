@@ -125,16 +125,16 @@ public class StatisticActivity extends AppCompatActivity {
         }
 
         String message = Arrays.toString(statisticsManager.getPrintedStatistics(spinnerNumber).toArray());
-        
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:"));
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, message);
         try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            startActivity(Intent.createChooser(emailIntent, getString(R.string.send_email_dialog_info)));
         } catch (ActivityNotFoundException ex) {
-            Toast.makeText(this, "There are no email clients installed and/or there is no email account setup", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.email_error, Toast.LENGTH_LONG).show();
         }
 
     }
