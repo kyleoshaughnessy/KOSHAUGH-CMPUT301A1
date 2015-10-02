@@ -17,7 +17,7 @@ limitations under the License.
 
 #Citations:
 
-Singleton manager design pattern: 2014 Abrahm Hindle https://www.youtube.com/watch?v=gmNfc6u1qk0&index=7&list=PL240uJOh_Vb4PtMZ0f7N8ACYkCLv0673O
+Singleton manager design pattern: 2014 Abram Hindle https://www.youtube.com/watch?v=gmNfc6u1qk0&index=7&list=PL240uJOh_Vb4PtMZ0f7N8ACYkCLv0673O
 
 Boilerplate email intent chooser: Stack overflow user Aerrow's answer here http://stackoverflow.com/questions/10294363/action-send-force-sending-with-email
 
