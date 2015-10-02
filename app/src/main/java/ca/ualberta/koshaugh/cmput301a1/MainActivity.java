@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         GameshowStatisticManager.createManager(getApplicationContext());
     }
 
-    public void onReactionTimerButtonClick(View v) {
+    public void onReactionTimerButtonClick(View view) {
         final Intent intent = new Intent(this, ReactionTimerActivity.class);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void onGameshowButtonClick(View v) {
+    public void onGameshowButtonClick(View view) {
         final Intent intent = new Intent(this, GameshowModeActivity.class);
         String[] numberOfPlayersOptions = new String[]{"2", "3", "4"};
 

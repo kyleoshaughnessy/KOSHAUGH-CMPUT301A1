@@ -15,7 +15,7 @@ import java.util.Comparator;
  */
 public class ReactionStatisticManager implements StatisticsManager<ReactionStatistic> {
 
-    private static final String preferneceFile = "KOSHAUGH_A1";
+    private static final String preferenceFile = "KOSHAUGH_A1";
     private static final String key = "reactionStatisticList";
 
     private static ReactionStatisticManager reactionStatisticManager = null;
@@ -54,7 +54,7 @@ public class ReactionStatisticManager implements StatisticsManager<ReactionStati
     }
 
     public void saveStatistics() {
-        SharedPreferences mPrefs = context.getSharedPreferences(preferneceFile, Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = context.getSharedPreferences(preferenceFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(statistics);
@@ -64,7 +64,7 @@ public class ReactionStatisticManager implements StatisticsManager<ReactionStati
 
     public void loadStatistics() {
         Gson gson = new Gson();
-        String json = context.getSharedPreferences(preferneceFile, context.MODE_PRIVATE).getString(key, "");
+        String json = context.getSharedPreferences(preferenceFile, context.MODE_PRIVATE).getString(key, "");
         ReactionStatistic[] tempStats = gson.fromJson(json, ReactionStatistic[].class);
         if (tempStats != null) {
             statistics = new ArrayList<>(Arrays.asList(tempStats));
@@ -109,26 +109,6 @@ public class ReactionStatisticManager implements StatisticsManager<ReactionStati
     private ReactionStatistic getMaximum(Integer lastN) {
         ArrayList<ReactionStatistic> tempList = getLastNReactionStatsSorted(lastN);
         return tempList.get(tempList.size() - 1);
-    }
-
-    private ReactionStatistic getMedian() {
-        return getMedian(statistics.size());
-    }
-
-    private Long getAverage() {
-        return getAverage(statistics.size());
-    }
-
-    private ReactionStatistic getMinimum() {
-        return getMinimum(statistics.size());
-    }
-
-    private ReactionStatistic getMaximum() {
-        return getMaximum(statistics.size());
-    }
-
-    private void sortByReactionTime() {
-        sortByReactionTime(statistics);
     }
 
     private void sortByReactionTime(ArrayList<ReactionStatistic> list) {

@@ -13,25 +13,12 @@ public class ReactionStatistic implements Comparable<ReactionStatistic> {
     public ReactionStatistic() {
     }
 
-    public ReactionStatistic(Date startTime) {
-        this.startTime = startTime.getTime();
-    }
-
-    public ReactionStatistic(Date startTime, Date endTime) {
-        this.startTime = startTime.getTime();
-        this.endTime = endTime.getTime();
-    }
-
     public Long getStartTime() {
         return startTime;
     }
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime.getTime();
-    }
-
-    public Long getEndTime() {
-        return endTime;
     }
 
     public void setEndTime(Date endTime) {

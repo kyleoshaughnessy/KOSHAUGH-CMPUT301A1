@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class GameshowStatisticManager implements StatisticsManager<GameshowStatistic> {
 
-    private static final String preferneceFile = "KOSHAUGH_A1";
+    private static final String preferenceFile = "KOSHAUGH_A1";
     private static final String key = "gameshowStatisticList";
 
     private static GameshowStatisticManager gameshowStatisticManager = null;
@@ -45,7 +45,7 @@ public class GameshowStatisticManager implements StatisticsManager<GameshowStati
 
     @Override
     public void saveStatistics() {
-        SharedPreferences mPrefs = context.getSharedPreferences(preferneceFile, Context.MODE_PRIVATE);
+        SharedPreferences mPrefs = context.getSharedPreferences(preferenceFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(statistics);
@@ -56,7 +56,7 @@ public class GameshowStatisticManager implements StatisticsManager<GameshowStati
     @Override
     public void loadStatistics() {
         Gson gson = new Gson();
-        String json = context.getSharedPreferences(preferneceFile, context.MODE_PRIVATE).getString(key, "");
+        String json = context.getSharedPreferences(preferenceFile, context.MODE_PRIVATE).getString(key, "");
         GameshowStatistic[] tempStats = gson.fromJson(json, GameshowStatistic[].class);
         if (tempStats != null) {
             statistics = new ArrayList<>(Arrays.asList(tempStats));

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class ReactionTimerActivity extends AppCompatActivity {
 
-    private static final Handler handler = new Handler();
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

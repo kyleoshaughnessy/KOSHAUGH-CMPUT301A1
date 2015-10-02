@@ -29,9 +29,6 @@ public class StatisticActivity extends AppCompatActivity {
     private ArrayAdapter<String> statsAdapter;
     private ArrayList<String> stats;
 
-    public StatisticActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
