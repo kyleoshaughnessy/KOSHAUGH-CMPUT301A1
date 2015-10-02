@@ -16,6 +16,15 @@
 
 package ca.ualberta.koshaugh.cmput301a1;
 
+/**
+ * StatisticManager is used to model the requirements of a manager used in the StatisticsActivity
+ * If a new class can fulfil the contract supplied here it can be esasily integrated into that
+ * activity
+ *
+ * This interface represents a manger that can load, save, clear, add to, and present its
+ * statistics.
+ */
+
 import java.util.ArrayList;
 
 public interface StatisticsManager<StatisticType> {

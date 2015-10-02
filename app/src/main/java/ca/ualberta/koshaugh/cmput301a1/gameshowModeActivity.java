@@ -25,6 +25,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+/**
+ * activity that supports 2, 3, or 4 players based upon user selection in the main activity.
+ * records a GameshowStatistic to the GameshowStatisticManager for use in the statistic activity
+ *
+ * this activity retains the ability to swap out views based on user preference.
+ */
+
 public class GameshowModeActivity extends AppCompatActivity {
     private Integer numberOfPlayers;
 

@@ -32,6 +32,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * dual purpose activity that can show statistics from any implementation of a StatisticManager.
+ *
+ * users can select different numbers in the spinner to get more specific statistics based on the
+ * type.
+ *
+ * Users also have the ability to launch an email intent to send their statistics.
+ * they can also choose to clear all statistics for their current mode.
+ */
+
 public class StatisticActivity extends AppCompatActivity {
 
     private String type;

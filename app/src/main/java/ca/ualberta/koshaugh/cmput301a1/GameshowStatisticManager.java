@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+/**
+ * Provides persistence and modeling of the winning players in the Gameshow Mode.
+ * All statistics will be saved to disk and read back to avoid lost scores.
+ *
+ * Meant to be used as a singleton as that is the only way to access an instance of the manager
+ *
+ * Saves all scores to SharedPreferences
+ */
+
 package ca.ualberta.koshaugh.cmput301a1;
 
 import android.content.Context;

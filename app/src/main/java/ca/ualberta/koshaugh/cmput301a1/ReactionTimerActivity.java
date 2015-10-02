@@ -29,6 +29,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ * This activity works as both the view and controller for creating new reaction statistics
+ * all statistics are saved to the model (ReactionStatisticManager.getManager()) which will later
+ * be shared with the statistic activity
+ */
+
 public class ReactionTimerActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();

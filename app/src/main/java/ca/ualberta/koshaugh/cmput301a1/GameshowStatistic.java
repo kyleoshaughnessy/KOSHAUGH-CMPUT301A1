@@ -16,6 +16,13 @@
 
 package ca.ualberta.koshaugh.cmput301a1;
 
+/**
+ * GameshowStatistic is meant to model a result of the gameshow mode represented by GameshowActivity
+ *
+ * This provides an abstraction for who won the game as well as how many players were playing
+ * Will be used with the GameshowStatisticManager
+ */
+
 public class GameshowStatistic {
     private Integer numberOfPlayers;
     private Integer winningPlayer;

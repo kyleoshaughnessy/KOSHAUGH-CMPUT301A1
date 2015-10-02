@@ -18,6 +18,12 @@ package ca.ualberta.koshaugh.cmput301a1;
 
 import java.util.Date;
 
+/**
+ * this class models the result of a reaction timer. Start and end times are recorded in order to
+ * calculate the reaction time as well as aid in sort chronologically.
+ *
+ * this class will be used in conjunction with the ReactionStatisticManager.
+ */
 public class ReactionStatistic implements Comparable<ReactionStatistic> {
     private Long startTime;
     private Long endTime;

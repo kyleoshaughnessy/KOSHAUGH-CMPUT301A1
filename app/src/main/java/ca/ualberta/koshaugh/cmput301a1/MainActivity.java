@@ -23,6 +23,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+/**
+ * declared as the entry activity for the koshaugh-reflex application
+ * provides navigation to the two different modes offered:
+ *      gameshow mode
+ *      reaction timer mode
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
