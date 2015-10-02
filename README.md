@@ -21,3 +21,7 @@ Singleton manager design pattern: 2014 Abram Hindle https://www.youtube.com/watc
 
 Boilerplate email intent chooser: Stack overflow user Aerrow's answer here http://stackoverflow.com/questions/10294363/action-send-force-sending-with-email
 
+Google GSON used in statisticManagers: https://github.com/google/gson
+
+#TODO:
+add video url and upload to github
