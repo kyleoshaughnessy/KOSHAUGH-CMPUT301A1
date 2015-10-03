@@ -29,7 +29,7 @@ import java.util.Comparator;
 /**
  * Manages the saving, loading, adding, and clearing of ReactionStatisic objects
  * Used statically by the reactiontimeractivity to add statistics
- * Used by the statisitcActivity to access and clear statistics. 
+ * Used by the statisitcActivity to access and clear statistics.
  */
 public class ReactionStatisticManager implements StatisticsManager<ReactionStatistic> {
 
