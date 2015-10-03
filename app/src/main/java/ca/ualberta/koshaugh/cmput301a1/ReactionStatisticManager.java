@@ -26,7 +26,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-
+/**
+ * Manages the saving, loading, adding, and clearing of ReactionStatisic objects
+ * Used statically by the reactiontimeractivity to add statistics
+ * Used by the statisitcActivity to access and clear statistics. 
+ */
 public class ReactionStatisticManager implements StatisticsManager<ReactionStatistic> {
 
     private static final String preferenceFile = "KOSHAUGH_A1";
