@@ -23,5 +23,7 @@ Boilerplate email intent chooser: Stack overflow user Aerrow's answer here http:
 
 Google GSON used in statisticManagers: https://github.com/google/gson
 
-#TODO:
-add video url and upload to github
+#Demo Videos:
+Faster demo video (1.39 * faster than orignal recording to fit 2 minute time constraint): https://github.com/kyleoshaughnessy/CMPUT301A1/blob/master/doc/DemoVideoFast.mov
+
+Original demo video(same content but has runtime of 2:45): https://github.com/kyleoshaughnessy/CMPUT301A1/blob/master/doc/DemoVideoOriginal.mov
